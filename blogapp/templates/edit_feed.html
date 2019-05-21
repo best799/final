@@ -1,0 +1,11 @@
+
+
+<form action="{% url 'create'%}">
+        <h4>제목: </h4>
+        <input class="input_field" type="text" name="title">
+        <br><br>
+        <h4>본문: </h4>
+        <textarea class="textarea_field" cols=40 rows=10 name="body">{{ feed.text }}</textarea>
+        <br><br>
+        <button class="write_button">수정</button>
+    </form>
