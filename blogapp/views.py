@@ -1,12 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from django.core.paginator import Paginator
 from .models import Blog
 
 # Create your views here.
 
 def home(request):
     blogs = Blog.objects
-    return render(request, 'home.html', {'blogs':blogs})
+    blog_list = Blog.objects.all()
+    paginator = Paginator(blog_list,3)
+    page = request.GET.get('page') 
+    posts = paginator.get_page(page)
+    return render(request, 'home.html', {'blogs':blogs, 'posts':posts})
+
+# 쿼리셋은 불러오는 것! 그러므로 new에는 쿼리셋 메소드가 없다
 
 def detail(request, blog_id):
     details = get_object_or_404(Blog, pk=blog_id)

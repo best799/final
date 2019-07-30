@@ -1,0 +1,16 @@
+
+<h1>로그인하기</h1>
+
+<form method = "POST" action="{%url 'login'%}">
+    {% csrf_token %}
+
+    Username:
+    <br>
+    <input type="text", name="username", value="">
+    <br>
+    Password:
+    <br>
+    <input type="password", name="password", value="">
+    <br>
+    <input type="submit", value="Login!">
+</form>
